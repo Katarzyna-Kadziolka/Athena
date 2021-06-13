@@ -233,5 +233,12 @@ namespace Athena {
             EditBookWindow editBook = new EditBookWindow(book);
             editBook.Show();
         }
+
+        private void DeleteDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            // poka¿ messagebox "czy na pewno chcesz?"
+            // po klikniêciu tak - informacja ¿e baza danych zosta³a usuniête
+            // zamkniêcie tych okien
+        }
     }
 }
