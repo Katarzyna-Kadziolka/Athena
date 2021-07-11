@@ -20,9 +20,9 @@ namespace Athena.Data.Books
         private int? publishmentYear;
         private Language language;
         private StoragePlace storagePlace;
+        private ObservableCollection<Borrowing> _borrowings;
+
         public IList<Category> Categories { get; set; }
-
-
         public Guid Id
         {
             get => id; set
@@ -82,8 +82,15 @@ namespace Athena.Data.Books
             }
         }
 
-        public ObservableCollection<Borrowing> Borrowing { get; set; }
-        public string LastBorrowName => this.Borrowing.Count < 1 ? string.Empty : this.Borrowing.Last().ReturnDate != null ? string.Empty : $"{this.Borrowing.Last().FirstName} {this.Borrowing.Last().LastName}";
+        public ObservableCollection<Borrowing> Borrowings {
+            get => _borrowings;
+            set {
+                _borrowings = value;
+                _borrowings.CollectionChanged += (sender, args) => OnPropertyChanged(nameof(LastBorrowName));
+            } 
+        }
+
+        public string LastBorrowName => this.Borrowings.Count < 1 ? string.Empty : this.Borrowings.Last().ReturnDate != null ? string.Empty : $"{this.Borrowings.Last().FirstName} {this.Borrowings.Last().LastName}";
 
         public event PropertyChangedEventHandler PropertyChanged;
         [NotifyPropertyChangedInvocator]

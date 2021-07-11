@@ -37,7 +37,7 @@ namespace Athena.Data.Books {
         public virtual PublishingHouse PublishingHouse { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
         public virtual StoragePlace StoragePlace { get; set; }
-        public virtual ICollection<Borrowing> Borrowing { get; set; }
+        public virtual ICollection<Borrowing> Borrowings { get; set; }
 
         private BookViewValidator _bookViewValidator;
         private string _title;

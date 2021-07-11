@@ -23,7 +23,7 @@ namespace Athena
                 .HasOne(a => a.StoragePlace)
                 .WithMany(a => a.Books);
             entity
-                .HasMany(a => a.Borrowing)
+                .HasMany(a => a.Borrowings)
                 .WithOne(a => a.Book)
                 .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();

@@ -24,10 +24,10 @@ namespace Athena.Windows
                 Author.Text = authors;
             }
 
-            Borrowing = book.Borrowing.Last();
+            Borrowing = book.Borrowings.Last();
             Calendar.SelectedDate = DateTime.Today;
             Calendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Today.AddDays(1), DateTime.Today.AddDays(1).AddYears(1000)));
-            Calendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Today.AddDays(-1).AddYears(-1000), (book.Borrowing.Last().BorrowDate).AddDays(-1)));
+            Calendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Today.AddDays(-1).AddYears(-1000), (book.Borrowings.Last().BorrowDate).AddDays(-1)));
         }
 
 

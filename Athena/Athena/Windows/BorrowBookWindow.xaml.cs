@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Athena.Data.Books;
 using Athena.Data.Borrowings;
 using Athena.EventManagers;
-using Athena.Windows;
+using Athena.Messages;
 using Castle.Core.Internal;
 using Microsoft.EntityFrameworkCore;
+using Hub = MessageHub.MessageHub;
 
 namespace Athena {
     /// <summary>
@@ -60,6 +60,7 @@ namespace Athena {
             var borrowing = Mapper.Instance.Map<Borrowing>(BorrowingView);
             ApplicationDbContext.Instance.Entry(borrowing).State = EntityState.Added;
             ApplicationDbContext.Instance.SaveChanges();
+            Hub.Instance.Publish(new BorrowBookMessage{Borrowing = borrowing});
             this.Close();
         }
     }

@@ -19,6 +19,6 @@ namespace Athena.Data.Books {
         public PublishingHouse PublishingHouse { get; set; }
         public IList<Category> Categories { get; set; }
         public StoragePlace StoragePlace { get; set; }
-        public IList<Borrowing> Borrowing { get; set; }
+        public IList<Borrowing> Borrowings { get; set; }
     }
 }
